@@ -1,0 +1,206 @@
+/* src/pages/Settings.css */
+
+.settings-page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    max-width: 640px;
+}
+
+.settings-section {}
+
+.settings-section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+    padding-bottom: var(--space-5);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.settings-section-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    background: var(--color-surface-hover);
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.settings-section-icon.danger {
+    background: var(--color-danger-light);
+    color: var(--color-danger);
+}
+
+.settings-section-title {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+}
+
+.settings-section-desc {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    margin-top: var(--space-1);
+    line-height: var(--line-height-relaxed);
+}
+
+/* Connected state */
+.telegram-connected {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding: var(--space-4);
+    background: var(--color-success-light);
+    border-radius: var(--radius-md);
+}
+
+.telegram-connected-info {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--font-size-sm);
+    color: var(--color-success);
+}
+
+/* Telegram form */
+.telegram-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+}
+
+.form-hint {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    line-height: var(--line-height-relaxed);
+}
+
+.link {
+    color: var(--color-accent);
+    text-decoration: underline;
+}
+
+code {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.9em;
+    background: var(--color-surface-hover);
+    padding: 1px 4px;
+    border-radius: 4px;
+}
+
+.settings-bot-steps {
+    background: var(--color-bg);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+}
+
+.settings-steps-title {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    margin-bottom: var(--space-3);
+}
+
+.settings-steps-list {
+    padding-left: var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.settings-steps-list li {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+}
+
+.settings-actions {
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+}
+
+/* Reminder toggles */
+.reminder-toggles {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.reminder-toggle-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding: var(--space-4);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+}
+
+.reminder-toggle-label {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+}
+
+.reminder-toggle-desc {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    margin-top: 2px;
+}
+
+/* Toggle button */
+.toggle-btn {
+    width: 44px;
+    height: 24px;
+    border-radius: var(--radius-full);
+    background: var(--color-border-strong);
+    position: relative;
+    transition: background var(--transition-fast);
+    flex-shrink: 0;
+}
+
+.toggle-btn.active {
+    background: var(--color-accent);
+}
+
+.toggle-thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: var(--shadow-xs);
+    transition: transform var(--transition-fast);
+}
+
+.toggle-btn.active .toggle-thumb {
+    transform: translateX(20px);
+}
+
+/* Danger zone */
+.settings-danger {
+    border-color: var(--color-danger-light);
+}
+
+/* About */
+.settings-about {
+    text-align: center;
+    padding: var(--space-4);
+}
+
+.about-name {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+}
+
+.about-desc {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    margin-top: var(--space-1);
+}

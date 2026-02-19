@@ -1,0 +1,228 @@
+/* src/pages/Tasks.css */
+
+.tasks-page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+}
+
+.tasks-controls {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.tasks-search-wrapper {
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.tasks-search-wrapper svg {
+    position: absolute;
+    left: var(--space-3);
+    color: var(--color-text-muted);
+    pointer-events: none;
+}
+
+.tasks-search {
+    padding-left: calc(var(--space-3) + 16px + var(--space-2)) !important;
+}
+
+.tasks-subject-filter {
+    width: auto;
+    min-width: 180px;
+}
+
+/* Filter tabs */
+.filter-tabs {
+    display: flex;
+    gap: var(--space-1);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-1);
+    width: fit-content;
+}
+
+.filter-tab {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+    transition: all var(--transition-fast);
+}
+
+.filter-tab:hover {
+    background: var(--color-surface-hover);
+    color: var(--color-text-primary);
+}
+
+.filter-tab.active {
+    background: var(--color-text-primary);
+    color: var(--color-text-inverse);
+}
+
+.filter-tab-count {
+    font-size: 11px;
+    padding: 1px var(--space-2);
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.15);
+    min-width: 20px;
+    text-align: center;
+}
+
+.filter-tab:not(.active) .filter-tab-count {
+    background: var(--color-surface-hover);
+    color: var(--color-text-muted);
+}
+
+/* Task table */
+.task-table-wrapper {
+    overflow-x: auto;
+}
+
+.task-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.task-table thead {
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.task-table th {
+    text-align: left;
+    font-size: 11px;
+    font-weight: var(--font-weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-muted);
+    padding: var(--space-3) var(--space-4);
+    white-space: nowrap;
+}
+
+.task-row {
+    border-bottom: 1px solid var(--color-border);
+    transition: background var(--transition-fast);
+}
+
+.task-row:last-child {
+    border-bottom: none;
+}
+
+.task-row:hover {
+    background: var(--color-bg);
+}
+
+.task-row.completed {
+    opacity: 0.65;
+}
+
+.task-table td {
+    padding: var(--space-4);
+    font-size: var(--font-size-sm);
+    vertical-align: middle;
+}
+
+/* Checkbox */
+.task-check {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid var(--color-border-strong);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+    flex-shrink: 0;
+}
+
+.task-check:hover {
+    border-color: var(--color-accent);
+}
+
+.task-check.checked {
+    background: var(--color-success);
+    border-color: var(--color-success);
+    color: white;
+}
+
+.task-title {
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+}
+
+.task-title.done {
+    text-decoration: line-through;
+    color: var(--color-text-muted);
+}
+
+/* Deadline */
+.task-deadline {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--font-size-xs);
+    white-space: nowrap;
+}
+
+.deadline-overdue {
+    color: var(--color-danger);
+}
+
+.deadline-urgent {
+    color: var(--color-warning);
+}
+
+.deadline-normal {
+    color: var(--color-text-secondary);
+}
+
+.deadline-completed {
+    color: var(--color-text-muted);
+}
+
+.task-source {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+}
+
+.task-delete {
+    color: var(--color-text-muted) !important;
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+
+.task-row:hover .task-delete {
+    opacity: 1;
+}
+
+.task-delete:hover {
+    color: var(--color-danger) !important;
+}
+
+@media (max-width: 768px) {
+    .tasks-controls {
+        flex-wrap: wrap;
+    }
+
+    .tasks-search-wrapper {
+        flex: 1 1 100%;
+        order: -1;
+    }
+
+    .filter-tabs {
+        overflow-x: auto;
+        max-width: 100%;
+    }
+}
