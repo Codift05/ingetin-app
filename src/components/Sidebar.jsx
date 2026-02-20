@@ -2,7 +2,7 @@
 import { NavLink } from 'react-router-dom';
 import { useTaskContext } from '../context/TaskContext';
 import {
-    LogoIcon, HomeIcon, ListIcon, BellIcon,
+    HomeIcon, ListIcon, BellIcon,
     SettingsIcon, TelegramIcon,
 } from './Icons';
 import './Sidebar.css';
@@ -24,11 +24,7 @@ export default function Sidebar({ isOpen, onClose }) {
             <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
                 {/* Logo */}
                 <div className="sidebar-logo">
-                    <LogoIcon size={32} className="sidebar-logo-icon" />
-                    <div className="sidebar-logo-text">
-                        <div className="sidebar-logo-name">Inget.in</div>
-                        <div className="sidebar-logo-tagline">Smart Academic Reminder</div>
-                    </div>
+                    <img src="/MIP 2.png" height="36" alt="Inget.in" style={{ objectFit: 'contain', display: 'block' }} />
                 </div>
 
                 {/* Navigation */}

@@ -59,8 +59,7 @@ export default function Landing() {
             <nav className="landing-nav">
                 <div className="landing-container">
                     <div className="nav-brand">
-                        <LogoIcon size={28} />
-                        <span className="nav-brand-name">Inget.in</span>
+                        <img src="/MIP 2.png" height="38" alt="Inget.in" style={{ display: 'block', objectFit: 'contain' }} />
                     </div>
                     <div className="nav-links">
                         <a href="#fitur" className="nav-link">Fitur</a>
@@ -235,8 +234,7 @@ export default function Landing() {
                 <div className="landing-container">
                     <div className="footer-inner">
                         <div className="footer-brand">
-                            <LogoIcon size={20} />
-                            <span>Inget.in</span>
+                            <img src="/MIP 2.png" height="28" alt="Inget.in" style={{ display: 'block', objectFit: 'contain' }} />
                         </div>
                         <p className="footer-copy">
                             Dibuat untuk mahasiswa Indonesia. Gratis selamanya.

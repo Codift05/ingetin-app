@@ -170,21 +170,14 @@ export const ShieldIcon = ({ size, className }) => (
 );
 
 export const LogoIcon = ({ size = 32, className }) => (
-    <svg
+    <img
+        src="/MIP.png"
         width={size}
-        height={Math.round(size * 0.86)}
-        viewBox="0 0 100 86"
-        fill="none"
+        height={size}
+        alt="Inget.in logo"
         className={className}
-        aria-hidden="true"
-    >
-        {/* Orange chevron body */}
-        <path d="M0 86 L50 0 L70 34 L28 86 Z" fill="#F7931A" />
-        {/* Orange right leg */}
-        <path d="M58 50 L78 50 L100 86 L50 86 Z" fill="#F7931A" />
-        {/* Black top-right flag */}
-        <path d="M70 34 L100 0 L100 50 L78 50 Z" fill="#1A1A1A" />
-    </svg>
+        style={{ objectFit: 'contain', display: 'block' }}
+    />
 );
 
 export const MenuIcon = ({ size, className }) => (
