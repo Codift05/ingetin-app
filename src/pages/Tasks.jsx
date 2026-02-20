@@ -3,13 +3,10 @@ import { useState } from 'react';
 import { useTaskContext } from '../context/TaskContext';
 import AddTaskModal from '../components/AddTaskModal';
 import {
-    PlusIcon, TrashIcon, CheckIcon, FilterIcon, SearchIcon,
+    PlusIcon, TrashIcon, CheckIcon,
     CalendarIcon, TelegramIcon
 } from '../components/Icons';
 import './Tasks.css';
-
-// Re-export a simple inline SearchIcon since it's not in Icons.jsx
-import { ClockIcon } from '../components/Icons';
 
 function SearchSVG({ size = 16 }) {
     return (
@@ -163,8 +160,8 @@ export default function Tasks() {
                                             </td>
                                             <td>
                                                 <span className={`badge ${dlStatus === 'overdue' ? 'badge-danger' :
-                                                        dlStatus === 'urgent' ? 'badge-warning' :
-                                                            task.status === 'completed' ? 'badge-success' : 'badge-accent'
+                                                    dlStatus === 'urgent' ? 'badge-warning' :
+                                                        task.status === 'completed' ? 'badge-success' : 'badge-accent'
                                                     }`}>
                                                     {dlStatus === 'overdue' ? 'Terlambat' :
                                                         dlStatus === 'urgent' ? 'Mendesak' :
