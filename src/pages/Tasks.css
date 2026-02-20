@@ -214,6 +214,7 @@
 @media (max-width: 768px) {
     .tasks-controls {
         flex-wrap: wrap;
+        gap: var(--space-2);
     }
 
     .tasks-search-wrapper {
@@ -221,8 +222,37 @@
         order: -1;
     }
 
+    .tasks-subject-filter {
+        flex: 1;
+        min-width: 0;
+    }
+
     .filter-tabs {
         overflow-x: auto;
         max-width: 100%;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .filter-tab {
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 480px) {
+
+    /* On small screens, always show delete button (no hover) */
+    .task-delete {
+        opacity: 1 !important;
+    }
+
+    /* Table gets compact */
+    .task-table th,
+    .task-table td {
+        padding: var(--space-3);
+    }
+
+    /* Hide less critical columns */
+    .task-table .col-source {
+        display: none;
     }
 }

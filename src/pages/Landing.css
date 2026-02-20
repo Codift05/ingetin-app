@@ -477,25 +477,89 @@
     }
 }
 
-@media (max-width: 640px) {
-
-    .features-grid,
-    .steps-grid {
-        grid-template-columns: 1fr;
+@media (max-width: 768px) {
+    .hero {
+        padding: var(--space-16) 0 var(--space-12);
     }
 
     .hero-title {
-        font-size: clamp(2rem, 10vw, 3rem);
+        font-size: clamp(1.875rem, 8vw, 2.75rem);
+        letter-spacing: -0.03em;
+    }
+
+    .hero-desc {
+        font-size: var(--font-size-sm);
+        max-width: 100%;
+        padding: 0 var(--space-2);
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0 var(--space-4);
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+        justify-content: center;
     }
 
     .hero-stats {
         flex-direction: column;
-        gap: var(--space-4);
+        width: 100%;
+        max-width: 300px;
+        gap: var(--space-3);
+        padding: var(--space-5) var(--space-6);
     }
 
     .hero-stat-divider {
         width: 40px;
         height: 1px;
+    }
+
+    .features-grid,
+    .steps-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-3);
+    }
+
+    .section {
+        padding: var(--space-12) 0;
+    }
+
+    .section-title {
+        font-size: clamp(1.375rem, 6vw, 1.875rem);
+    }
+
+    .cta-title {
+        font-size: clamp(1.25rem, 6vw, 1.75rem);
+    }
+
+    .telegram-preview-title {
+        font-size: clamp(1.25rem, 6vw, 1.75rem);
+    }
+}
+
+@media (max-width: 640px) {
+    .landing-container {
+        padding: 0 var(--space-4);
+    }
+
+    .hero {
+        padding: var(--space-12) 0 var(--space-10);
+    }
+
+    .hero-title {
+        font-size: clamp(1.75rem, 9vw, 2.25rem);
+    }
+
+    .hero-badge {
+        font-size: 10px;
+    }
+
+    .features-grid,
+    .steps-grid {
+        grid-template-columns: 1fr;
     }
 
     .nav-links a:not(.btn) {
@@ -505,5 +569,10 @@
     .footer-inner {
         flex-direction: column;
         text-align: center;
+    }
+
+    .reminders-summary {
+        grid-template-columns: 1fr;
+        max-width: 100%;
     }
 }

@@ -367,8 +367,48 @@
     }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-3);
+    }
+
+    .upcoming-card {
+        padding: var(--space-3) var(--space-4);
+    }
+
+    .upcoming-meta {
+        flex-wrap: wrap;
+        gap: var(--space-2);
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-2);
+    }
+
+    .stat-card {
+        padding: var(--space-4);
+    }
+
+    .stat-card-value {
+        font-size: var(--font-size-2xl);
+    }
+
+    .upcoming-card {
+        flex-wrap: wrap;
+        gap: var(--space-2);
+    }
+
+    .upcoming-countdown {
+        text-align: left;
+        flex-shrink: 1;
+    }
+
+    .donut-wrapper {
+        flex-direction: column;
+        align-items: center;
     }
 }

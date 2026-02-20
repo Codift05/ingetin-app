@@ -171,3 +171,26 @@
     font-size: var(--font-size-xs);
     color: var(--color-success);
 }
+
+@media (max-width: 768px) {
+    .reminders-summary {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .reminders-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .reminder-item-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-1);
+    }
+
+    .reminders-list {
+        padding: var(--space-3) var(--space-4);
+    }
+}
