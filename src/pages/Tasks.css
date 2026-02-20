@@ -272,13 +272,12 @@
     }
 
     .task-mobile-only {
-        display: block;
+        display: flex;
     }
 }
 
 /* ── Mobile Card List ────────────────────── */
 .task-card-list {
-    display: flex;
     flex-direction: column;
 }
 
