@@ -117,80 +117,129 @@ export default function Tasks() {
                         <p style={{ fontSize: 'var(--font-size-sm)' }}>Tidak ada tugas ditemukan</p>
                     </div>
                 ) : (
-                    <div className="task-table-wrapper">
-                        <table className="task-table">
-                            <thead>
-                                <tr>
-                                    <th style={{ width: 40 }}></th>
-                                    <th>Tugas</th>
-                                    <th>Mata Kuliah</th>
-                                    <th>Deadline</th>
-                                    <th>Status</th>
-                                    <th>Sumber</th>
-                                    <th style={{ width: 60 }}></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {filtered.map(task => {
-                                    const dlStatus = getDeadlineStatus(task.deadline, task.status);
-                                    return (
-                                        <tr key={task.id} className={`task-row ${task.status === 'completed' ? 'completed' : ''}`}>
-                                            <td>
-                                                <button
-                                                    className={`task-check ${task.status === 'completed' ? 'checked' : ''}`}
-                                                    onClick={() => toggleTask(task.id)}
-                                                    aria-label="Toggle selesai"
-                                                >
-                                                    {task.status === 'completed' && <CheckIcon size={11} />}
-                                                </button>
-                                            </td>
-                                            <td>
-                                                <span className={`task-title ${task.status === 'completed' ? 'done' : ''}`}>
-                                                    {task.title}
-                                                </span>
-                                            </td>
-                                            <td>
-                                                <span className="badge badge-default">{task.subject}</span>
-                                            </td>
-                                            <td>
-                                                <div className={`task-deadline deadline-${dlStatus}`}>
-                                                    <CalendarIcon size={13} />
-                                                    <span>{formatDeadline(task.deadline)}</span>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <span className={`badge ${dlStatus === 'overdue' ? 'badge-danger' :
-                                                    dlStatus === 'urgent' ? 'badge-warning' :
-                                                        task.status === 'completed' ? 'badge-success' : 'badge-accent'
-                                                    }`}>
-                                                    {dlStatus === 'overdue' ? 'Terlambat' :
-                                                        dlStatus === 'urgent' ? 'Mendesak' :
-                                                            task.status === 'completed' ? 'Selesai' : 'Berlangsung'}
-                                                </span>
-                                            </td>
-                                            <td>
-                                                <span className="task-source">
-                                                    {task.source === 'telegram' ? <TelegramIcon size={13} /> : null}
-                                                    {task.source === 'telegram' ? 'Telegram' : 'Manual'}
-                                                </span>
-                                            </td>
-                                            <td>
-                                                <button
-                                                    className="btn btn-ghost btn-sm task-delete"
-                                                    onClick={() => deleteTask(task.id)}
-                                                    aria-label="Hapus tugas"
-                                                >
-                                                    <TrashIcon size={14} />
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    );
-                                })}
-                            </tbody>
-                        </table>
-                    </div>
+                    <>
+                        {/* Desktop: Table */}
+                        <div className="task-table-wrapper task-desktop-only">
+                            <table className="task-table">
+                                <thead>
+                                    <tr>
+                                        <th style={{ width: 40 }}></th>
+                                        <th>Tugas</th>
+                                        <th>Mata Kuliah</th>
+                                        <th>Deadline</th>
+                                        <th>Status</th>
+                                        <th>Sumber</th>
+                                        <th style={{ width: 60 }}></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {filtered.map(task => {
+                                        const dlStatus = getDeadlineStatus(task.deadline, task.status);
+                                        return (
+                                            <tr key={task.id} className={`task-row ${task.status === 'completed' ? 'completed' : ''}`}>
+                                                <td>
+                                                    <button
+                                                        className={`task-check ${task.status === 'completed' ? 'checked' : ''}`}
+                                                        onClick={() => toggleTask(task.id)}
+                                                        aria-label="Toggle selesai"
+                                                    >
+                                                        {task.status === 'completed' && <CheckIcon size={11} />}
+                                                    </button>
+                                                </td>
+                                                <td>
+                                                    <span className={`task-title ${task.status === 'completed' ? 'done' : ''}`}>
+                                                        {task.title}
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span className="badge badge-default">{task.subject}</span>
+                                                </td>
+                                                <td>
+                                                    <div className={`task-deadline deadline-${dlStatus}`}>
+                                                        <CalendarIcon size={13} />
+                                                        <span>{formatDeadline(task.deadline)}</span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span className={`badge ${dlStatus === 'overdue' ? 'badge-danger' :
+                                                        dlStatus === 'urgent' ? 'badge-warning' :
+                                                            task.status === 'completed' ? 'badge-success' : 'badge-accent'
+                                                        }`}>
+                                                        {dlStatus === 'overdue' ? 'Terlambat' :
+                                                            dlStatus === 'urgent' ? 'Mendesak' :
+                                                                task.status === 'completed' ? 'Selesai' : 'Berlangsung'}
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span className="task-source">
+                                                        {task.source === 'telegram' ? <TelegramIcon size={13} /> : null}
+                                                        {task.source === 'telegram' ? 'Telegram' : 'Manual'}
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <button
+                                                        className="btn btn-ghost btn-sm task-delete"
+                                                        onClick={() => deleteTask(task.id)}
+                                                        aria-label="Hapus tugas"
+                                                    >
+                                                        <TrashIcon size={14} />
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        );
+                                    })}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        {/* Mobile: Card List */}
+                        <div className="task-card-list task-mobile-only">
+                            {filtered.map(task => {
+                                const dlStatus = getDeadlineStatus(task.deadline, task.status);
+                                return (
+                                    <div key={task.id} className={`task-mobile-card ${task.status === 'completed' ? 'completed' : ''} border-${dlStatus}`}>
+                                        <div className="task-mobile-card-top">
+                                            <button
+                                                className={`task-check ${task.status === 'completed' ? 'checked' : ''}`}
+                                                onClick={() => toggleTask(task.id)}
+                                                aria-label="Toggle selesai"
+                                            >
+                                                {task.status === 'completed' && <CheckIcon size={11} />}
+                                            </button>
+                                            <span className={`task-title ${task.status === 'completed' ? 'done' : ''}`}>
+                                                {task.title}
+                                            </span>
+                                            <button
+                                                className="btn btn-ghost btn-sm task-delete"
+                                                onClick={() => deleteTask(task.id)}
+                                                aria-label="Hapus tugas"
+                                            >
+                                                <TrashIcon size={14} />
+                                            </button>
+                                        </div>
+                                        <div className="task-mobile-card-meta">
+                                            <span className="badge badge-default">{task.subject}</span>
+                                            <span className={`badge ${dlStatus === 'overdue' ? 'badge-danger' :
+                                                dlStatus === 'urgent' ? 'badge-warning' :
+                                                    task.status === 'completed' ? 'badge-success' : 'badge-accent'
+                                                }`}>
+                                                {dlStatus === 'overdue' ? 'Terlambat' :
+                                                    dlStatus === 'urgent' ? 'Mendesak' :
+                                                        task.status === 'completed' ? 'Selesai' : 'Berlangsung'}
+                                            </span>
+                                        </div>
+                                        <div className={`task-deadline deadline-${dlStatus}`} style={{ fontSize: 'var(--font-size-xs)' }}>
+                                            <CalendarIcon size={12} />
+                                            <span>{formatDeadline(task.deadline)}</span>
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </>
                 )}
             </div>
+
 
             {showModal && <AddTaskModal onClose={() => setShowModal(false)} />}
         </div>
