@@ -172,21 +172,18 @@ export const ShieldIcon = ({ size, className }) => (
 export const LogoIcon = ({ size = 32, className }) => (
     <svg
         width={size}
-        height={size}
-        viewBox="0 0 32 32"
+        height={Math.round(size * 0.86)}
+        viewBox="0 0 100 86"
         fill="none"
         className={className}
         aria-hidden="true"
     >
-        <rect width="32" height="32" rx="8" fill="#2563EB" />
-        <path
-            d="M10 16.5L14 20.5L22 11.5"
-            stroke="white"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-        />
-        <circle cx="22" cy="11" r="3" fill="#BFDBFE" opacity="0.5" />
+        {/* Orange chevron body */}
+        <path d="M0 86 L50 0 L70 34 L28 86 Z" fill="#F7931A" />
+        {/* Orange right leg */}
+        <path d="M58 50 L78 50 L100 86 L50 86 Z" fill="#F7931A" />
+        {/* Black top-right flag */}
+        <path d="M70 34 L100 0 L100 50 L78 50 Z" fill="#1A1A1A" />
     </svg>
 );
 

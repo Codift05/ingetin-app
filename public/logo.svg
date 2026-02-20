@@ -1,5 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 86">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 86" fill="none">
+  <!-- Orange chevron body (left + middle) -->
   <path d="M0 86 L50 0 L70 34 L28 86 Z" fill="#F7931A"/>
+  <!-- Bottom-right orange leg -->
   <path d="M50 86 L72 86 L100 86 L78 50 L58 50 Z" fill="#F7931A"/>
+  <!-- Black top-right flag -->
   <path d="M70 34 L100 0 L100 50 L78 50 Z" fill="#1A1A1A"/>
 </svg>
