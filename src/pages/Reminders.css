@@ -216,7 +216,8 @@
 
 @media (max-width: 480px) {
     .reminders-summary {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-3);
     }
 
     .reminder-item-header {
