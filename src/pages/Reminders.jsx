@@ -54,21 +54,28 @@ export default function Reminders() {
         <div className="reminders-page">
             {/* Summary */}
             <div className="reminders-summary">
-                <div className="reminder-stat">
-                    <div className="reminder-stat-icon sent"><BellIcon size={18} /></div>
-                    <div>
+                <div className="reminder-stat sent">
+                    <div className="reminder-stat-accent" />
+                    <div className="reminder-stat-body">
                         <div className="reminder-stat-value">{sentCount}</div>
-                        <div className="reminder-stat-label">Sudah terkirim</div>
+                        <div className="reminder-stat-label">Terkirim</div>
+                    </div>
+                    <div className="reminder-stat-icon-bg">
+                        <BellIcon size={20} />
                     </div>
                 </div>
-                <div className="reminder-stat">
-                    <div className="reminder-stat-icon pending"><ClockIcon size={18} /></div>
-                    <div>
+                <div className="reminder-stat pending">
+                    <div className="reminder-stat-accent" />
+                    <div className="reminder-stat-body">
                         <div className="reminder-stat-value">{pendingCount}</div>
                         <div className="reminder-stat-label">Terjadwal</div>
                     </div>
+                    <div className="reminder-stat-icon-bg">
+                        <ClockIcon size={20} />
+                    </div>
                 </div>
             </div>
+
 
             {/* Timeline */}
             <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
