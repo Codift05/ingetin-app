@@ -212,22 +212,7 @@ export default function Landing() {
                 </div>
             </section>
 
-            {/* CTA */}
-            <section className="section cta-section">
-                <div className="landing-container">
-                    <div className="cta-card">
-                        <CheckCircleIcon size={32} style={{ color: 'var(--color-accent)' }} />
-                        <h2 className="cta-title">Siap meningkatkan produktivitas akademikmu?</h2>
-                        <p className="cta-desc">
-                            Gratis selamanya. Tidak perlu daftar. Hanya butuh Telegram.
-                        </p>
-                        <Link to="/dashboard" className="btn btn-primary btn-lg">
-                            Mulai Sekarang Gratis
-                            <ArrowRightIcon size={18} />
-                        </Link>
-                    </div>
-                </div>
-            </section>
+
 
             {/* Footer */}
             <footer className="landing-footer">
