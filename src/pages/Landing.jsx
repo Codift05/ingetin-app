@@ -222,7 +222,7 @@ export default function Landing() {
                             Gratis selamanya. Tidak perlu daftar. Hanya butuh Telegram.
                         </p>
                         <Link to="/dashboard" className="btn btn-primary btn-lg">
-                            Mulai Sekarang — Gratis
+                            Mulai Sekarang Gratis
                             <ArrowRightIcon size={18} />
                         </Link>
                     </div>
@@ -237,7 +237,7 @@ export default function Landing() {
                             <img src="/MIP 2.png" height="28" alt="Inget.in" style={{ display: 'block', objectFit: 'contain' }} />
                         </div>
                         <p className="footer-copy">
-                            Dibuat untuk mahasiswa Indonesia. Gratis selamanya.
+                            Develop by Miftahuddin S. Arsyad
                         </p>
                     </div>
                 </div>
