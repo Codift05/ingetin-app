@@ -1,8 +1,9 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/Codift05/ingetin-app/master/public/vite.svg" width="60" alt="Inget.in Logo" />
+<img src="https://raw.githubusercontent.com/Codift05/ingetin-app/master/public/MIP%202.png" width="280" alt="Inget.in — Smart Academic Reminder" />
 
-# Inget.in
+<br/>
+<br/>
 
 **Smart Academic Reminder — Terintegrasi dengan Telegram Bot**
 
@@ -15,6 +16,7 @@ Sebuah web application yang membantu mahasiswa mencatat tugas, memantau deadline
 [![Telegram](https://img.shields.io/badge/Telegram_Bot-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://core.telegram.org/bots)
 
 </div>
+
 
 ---
 
