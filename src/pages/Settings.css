@@ -35,6 +35,11 @@
     color: var(--color-danger);
 }
 
+.settings-section-icon--moon {
+    background: var(--color-accent-light);
+    color: var(--color-accent);
+}
+
 .settings-section-title {
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-semibold);

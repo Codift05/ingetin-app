@@ -2,7 +2,8 @@
 import { useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import Sidebar from './Sidebar';
-import { MenuIcon } from './Icons';
+import { MenuIcon, MoonIcon, SunIcon } from './Icons';
+import { useTheme } from '../context/ThemeContext';
 import './Layout.css';
 
 const pageTitles = {
@@ -22,6 +23,7 @@ export default function Layout() {
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const location = useLocation();
     const page = pageTitles[location.pathname] || { title: 'Inget.in', subtitle: '' };
+    const { isDark, toggleTheme } = useTheme();
 
     return (
         <div className="app-layout">
@@ -43,6 +45,14 @@ export default function Layout() {
                     </div>
                     <div className="header-right">
                         <span className="header-date">{formatDate(new Date())}</span>
+                        <button
+                            className="theme-toggle-btn"
+                            onClick={toggleTheme}
+                            aria-label={isDark ? 'Aktifkan mode terang' : 'Aktifkan mode gelap'}
+                            title={isDark ? 'Mode Terang' : 'Mode Gelap'}
+                        >
+                            {isDark ? <SunIcon size={18} /> : <MoonIcon size={18} />}
+                        </button>
                     </div>
                 </header>
                 <main className="app-content">

@@ -1,11 +1,13 @@
 // src/pages/Settings.jsx
 import { useState } from 'react';
 import { useTaskContext } from '../context/TaskContext';
-import { TelegramIcon, CheckCircleIcon, ExternalLinkIcon, BellIcon, TrashIcon } from '../components/Icons';
+import { useTheme } from '../context/ThemeContext';
+import { TelegramIcon, CheckCircleIcon, ExternalLinkIcon, BellIcon, TrashIcon, MoonIcon } from '../components/Icons';
 import './Settings.css';
 
 export default function Settings() {
     const { telegramConnected, setTelegramConnected, telegramChatId, setTelegramChatId, setTasks } = useTaskContext();
+    const { isDark, toggleTheme } = useTheme();
     const [chatIdInput, setChatIdInput] = useState(telegramChatId);
     const [saved, setSaved] = useState(false);
     const [reminderSettings, setReminderSettings] = useState({
@@ -37,6 +39,28 @@ export default function Settings() {
 
     return (
         <div className="settings-page">
+            {/* Dark Mode */}
+            <div className="card settings-section">
+                <div className="settings-section-header" style={{ marginBottom: 0, borderBottom: 'none', paddingBottom: 0 }}>
+                    <div className="settings-section-icon settings-section-icon--moon">
+                        <MoonIcon size={20} />
+                    </div>
+                    <div style={{ flex: 1 }}>
+                        <h2 className="settings-section-title">Mode Gelap</h2>
+                        <p className="settings-section-desc">Aktifkan tampilan gelap untuk kenyamanan di malam hari</p>
+                    </div>
+                    <button
+                        className={`toggle-btn ${isDark ? 'active' : ''}`}
+                        onClick={toggleTheme}
+                        aria-label="Toggle mode gelap"
+                        role="switch"
+                        aria-checked={isDark}
+                    >
+                        <span className="toggle-thumb" />
+                    </button>
+                </div>
+            </div>
+
             {/* Telegram Connection */}
             <div className="card settings-section">
                 <div className="settings-section-header">

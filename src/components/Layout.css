@@ -27,6 +27,11 @@
     align-items: center;
     justify-content: space-between;
     gap: var(--space-4);
+    transition: background var(--transition-normal), border-color var(--transition-normal);
+}
+
+[data-theme="dark"] .app-header {
+    background: rgba(15, 17, 23, 0.85);
 }
 
 .header-left {
@@ -72,6 +77,24 @@
 .header-date {
     font-size: var(--font-size-sm);
     color: var(--color-text-muted);
+}
+
+.theme-toggle-btn {
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    color: var(--color-text-secondary);
+    transition: all var(--transition-fast);
+    flex-shrink: 0;
+}
+
+.theme-toggle-btn:hover {
+    background: var(--color-surface-hover);
+    color: var(--color-accent);
+    transform: rotate(12deg) scale(1.05);
 }
 
 .app-content {

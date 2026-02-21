@@ -2,8 +2,10 @@
 import { Link } from 'react-router-dom';
 import {
     LogoIcon, TelegramIcon, BellIcon, CheckCircleIcon, ZapIcon,
-    ArrowRightIcon, ShieldIcon, CalendarIcon, ChartBarIcon
+    ArrowRightIcon, ShieldIcon, CalendarIcon, ChartBarIcon,
+    MoonIcon, SunIcon,
 } from '../components/Icons';
+import { useTheme } from '../context/ThemeContext';
 import './Landing.css';
 
 const features = [
@@ -53,6 +55,7 @@ const steps = [
 ];
 
 export default function Landing() {
+    const { isDark, toggleTheme } = useTheme();
     return (
         <div className="landing">
             {/* Navbar */}
@@ -64,6 +67,14 @@ export default function Landing() {
                     <div className="nav-links">
                         <a href="#fitur" className="nav-link">Fitur</a>
                         <a href="#cara-kerja" className="nav-link">Cara Kerja</a>
+                        <button
+                            className="landing-theme-toggle"
+                            onClick={toggleTheme}
+                            aria-label={isDark ? 'Aktifkan mode terang' : 'Aktifkan mode gelap'}
+                            title={isDark ? 'Mode Terang' : 'Mode Gelap'}
+                        >
+                            {isDark ? <SunIcon size={18} /> : <MoonIcon size={18} />}
+                        </button>
                         <Link to="/dashboard" className="btn btn-primary btn-sm">
                             Buka Dashboard <ArrowRightIcon size={14} />
                         </Link>
