@@ -84,45 +84,25 @@ export default function Landing() {
 
             {/* Hero */}
             <section className="hero">
-                <div className="landing-container">
-                    <div className="hero-badge">
-                        <TelegramIcon size={13} />
-                        <span>Terintegrasi dengan Telegram Bot</span>
-                    </div>
+                <div className="hero-particles"></div> {/* CSS-only particle background */}
+                <div className="hero-noise"></div> {/* CSS noise texture overlay */}
+                <div className="landing-container hero-container">
                     <h1 className="hero-title">
-                        Jangan pernah lupa<br />
-                        <span className="hero-title-accent">deadline tugas</span> lagi
+                        Experience liftoff with the<br />
+                        next-generation Reminder
                     </h1>
                     <p className="hero-desc">
-                        Inget.in membantu mahasiswa mencatat tugas via Telegram, memantau deadline
-                        di satu dashboard, dan menerima pengingat otomatis sebelum waktu habis.
+                        Inget.in is the smart academic platform integrated with Telegram.<br />
+                        Never miss a deadline again with our automated reminders.
                     </p>
                     <div className="hero-actions">
-                        <Link to="/dashboard" className="btn btn-primary btn-lg">
-                            Buka Dashboard
-                            <ArrowRightIcon size={18} />
+                        <Link to="/dashboard" className="btn btn-pill btn-primary-inv">
+                            <ArrowRightIcon size={16} />
+                            Get Started for Free
                         </Link>
-                        <a href="#cara-kerja" className="btn btn-secondary btn-lg">
-                            Lihat Cara Kerja
+                        <a href="#cara-kerja" className="btn btn-pill btn-ghost">
+                            Explore use cases
                         </a>
-                    </div>
-
-                    {/* Stats */}
-                    <div className="hero-stats">
-                        <div className="hero-stat">
-                            <span className="hero-stat-value">Rp0</span>
-                            <span className="hero-stat-label">Biaya setup</span>
-                        </div>
-                        <div className="hero-stat-divider" />
-                        <div className="hero-stat">
-                            <span className="hero-stat-value">3x</span>
-                            <span className="hero-stat-label">Reminder per tugas</span>
-                        </div>
-                        <div className="hero-stat-divider" />
-                        <div className="hero-stat">
-                            <span className="hero-stat-value">Real-time</span>
-                            <span className="hero-stat-label">Sinkronisasi data</span>
-                        </div>
                     </div>
                 </div>
             </section>

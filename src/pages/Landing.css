@@ -52,7 +52,7 @@
 .nav-links {
     display: flex;
     align-items: center;
-    gap: var(--space-8);
+    gap: var(--space-6);
 }
 
 .nav-link {
@@ -89,116 +89,108 @@
 
 /* ── Hero ────────────────────────────────────────────── */
 .hero {
-    padding: calc(var(--space-24) + 8px) 0 var(--space-20);
+    position: relative;
+    padding: calc(var(--space-32) + 20px) 0 var(--space-24);
     text-align: center;
+    overflow: hidden;
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    padding: var(--space-2) var(--space-4);
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-full);
-    font-family: var(--font-display);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--color-text-secondary);
-    margin-bottom: var(--space-10);
+/* CSS Particle/Dot Effect */
+.hero-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    background-image: radial-gradient(var(--color-text-muted) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.15;
+    pointer-events: none;
+    mask-image: radial-gradient(circle at center, black 10%, transparent 70%);
+    -webkit-mask-image: radial-gradient(circle at center, black 10%, transparent 70%);
+}
+
+.hero-container {
+    position: relative;
+    z-index: 10;
 }
 
 .hero-title {
     font-family: 'Comfortaa', 'Montserrat', sans-serif;
-    font-size: clamp(2.5rem, 5.5vw, 4rem);
+    font-size: clamp(3rem, 7vw, 5.5rem);
     font-weight: 700;
-    letter-spacing: -0.01em;
-    line-height: 1.15;
+    letter-spacing: -0.05em;
+    /* Extremely tight tracking */
+    line-height: 1.05;
     color: var(--color-text-primary);
     margin-bottom: var(--space-6);
 }
 
-.hero-title-accent {
-    color: var(--color-accent);
-}
-
 .hero-desc {
     font-family: var(--font-display);
-    font-size: var(--font-size-base);
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
     font-weight: 400;
     color: var(--color-text-secondary);
-    line-height: 1.7;
-    max-width: 680px;
+    line-height: 1.6;
+    max-width: 720px;
     margin: 0 auto var(--space-10);
-    letter-spacing: 0.01em;
+    letter-spacing: -0.01em;
 }
 
 .hero-actions {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: var(--space-3);
+    gap: var(--space-4);
     flex-wrap: wrap;
-    margin-bottom: var(--space-16);
 }
 
-/* Override button font globally on landing */
+/* Base override for landing buttons */
 .landing .btn {
     font-family: var(--font-display);
     font-weight: 600;
-    letter-spacing: 0.01em;
+    letter-spacing: 0em;
 }
 
-.hero-stats {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-8);
-    padding: var(--space-5) var(--space-8);
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-xl);
+/* Pill shaped buttons */
+.btn-pill {
+    border-radius: 999px;
+    padding: 0 var(--space-6);
+    height: 48px;
+    font-size: var(--font-size-base);
 }
 
-.hero-stat {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
+.btn-primary-inv {
+    background: var(--color-text-primary);
+    color: var(--color-bg);
+    border: none;
 }
 
-.hero-stat-value {
-    font-family: var(--font-display);
-    font-size: var(--font-size-xl);
-    font-weight: 800;
-    letter-spacing: -0.03em;
+.btn-primary-inv:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    opacity: 0.9;
+}
+
+.btn-ghost {
+    background: transparent;
     color: var(--color-text-primary);
+    border: 1px solid var(--color-border-strong);
 }
 
-.hero-stat-label {
-    font-family: var(--font-display);
-    font-size: 11px;
-    font-weight: 500;
-    color: var(--color-text-muted);
-    letter-spacing: 0.02em;
-}
-
-.hero-stat-divider {
-    width: 1px;
-    height: 36px;
-    background: var(--color-border);
+.btn-ghost:hover {
+    background: var(--color-surface-hover);
+    border-color: var(--color-text-primary);
 }
 
 /* ── Sections ────────────────────────────────────────── */
 .section {
     padding: var(--space-20) 0;
-}
-
-.section-alt {
-    background: var(--color-surface);
-    border-top: 1px solid var(--color-border);
-    border-bottom: 1px solid var(--color-border);
 }
 
 .section-head {
