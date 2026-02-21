@@ -88,20 +88,20 @@ export default function Landing() {
                 <div className="hero-noise"></div> {/* CSS noise texture overlay */}
                 <div className="landing-container hero-container">
                     <h1 className="hero-title">
-                        Experience liftoff with the<br />
-                        next-generation Reminder
+                        Jangan pernah lupa<br />
+                        deadline tugas lagi
                     </h1>
                     <p className="hero-desc">
-                        Inget.in is the smart academic platform integrated with Telegram.<br />
-                        Never miss a deadline again with our automated reminders.
+                        Platform pengingat akademik pintar yang terintegrasi dengan Telegram.<br />
+                        Catat tugas mudah, pantau satu dashboard, pengingat otomatis.
                     </p>
                     <div className="hero-actions">
                         <Link to="/dashboard" className="btn btn-pill btn-primary-inv">
                             <ArrowRightIcon size={16} />
-                            Get Started for Free
+                            Mulai Sekarang Gratis
                         </Link>
                         <a href="#cara-kerja" className="btn btn-pill btn-ghost">
-                            Explore use cases
+                            Lihat Cara Kerja
                         </a>
                     </div>
                 </div>
