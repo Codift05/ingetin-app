@@ -92,7 +92,7 @@ export default function Landing() {
                         deadline tugas lagi
                     </h1>
                     <p className="hero-desc">
-                        Platform pengingat akademik pintar yang terintegrasi dengan Telegram.<br />
+                        Platform pengingat akademik pintar yang terintegrasi dengan Telegram.
                         Catat tugas mudah, pantau satu dashboard, pengingat otomatis.
                     </p>
                     <div className="hero-actions">
