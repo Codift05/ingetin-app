@@ -111,11 +111,11 @@
 }
 
 .hero-title {
-    font-family: 'Nunito', 'Montserrat', sans-serif;
+    font-family: 'Comfortaa', 'Montserrat', sans-serif;
     font-size: clamp(2.5rem, 5.5vw, 4rem);
-    font-weight: 900;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
     color: var(--color-text-primary);
     margin-bottom: var(--space-6);
 }
