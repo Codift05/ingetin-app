@@ -13,9 +13,9 @@
 
 :root {
   /* Color Palette — Monochrome + Accent */
-  --color-bg: #F8F9FA;
+  --color-bg: #FFFFFF;
   --color-surface: #FFFFFF;
-  --color-surface-hover: #F1F3F5;
+  --color-surface-hover: #F8F9FA;
   --color-border: #E9ECEF;
   --color-border-strong: #DEE2E6;
 
