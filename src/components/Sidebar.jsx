@@ -1,9 +1,9 @@
 // src/components/Sidebar.jsx
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { useTaskContext } from '../context/TaskContext';
 import {
     HomeIcon, ListIcon, BellIcon,
-    SettingsIcon, TelegramIcon,
+    SettingsIcon, TelegramIcon, ArrowRightIcon,
 } from './Icons';
 import './Sidebar.css';
 
@@ -68,6 +68,12 @@ export default function Sidebar({ isOpen, onClose }) {
                         </div>
                         <div className={`sidebar-telegram-dot ${telegramConnected ? 'connected' : 'disconnected'}`} />
                     </div>
+
+                    {/* Back to Landing */}
+                    <Link to="/" className="sidebar-back-home" onClick={onClose}>
+                        <ArrowRightIcon size={14} style={{ transform: 'rotate(180deg)' }} />
+                        <span>Kembali ke Beranda</span>
+                    </Link>
                 </div>
             </aside>
         </>

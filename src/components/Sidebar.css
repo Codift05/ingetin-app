@@ -120,6 +120,26 @@
 .sidebar-footer {
     padding: var(--space-4) var(--space-3);
     border-top: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.sidebar-back-home {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-muted);
+    transition: all var(--transition-fast);
+}
+
+.sidebar-back-home:hover {
+    background: var(--color-surface-hover);
+    color: var(--color-text-secondary);
 }
 
 .sidebar-telegram-status {
