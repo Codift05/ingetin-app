@@ -111,7 +111,6 @@ export default function Landing() {
             <section id="fitur" className="section">
                 <div className="landing-container">
                     <div className="section-head">
-                        <p className="section-eyebrow">Fitur Utama</p>
                         <h2 className="section-title">Semua yang kamu butuhkan</h2>
                         <p className="section-sub">
                             Dirancang khusus untuk mahasiswa yang butuh sistem pengingat sederhana namun efektif.
@@ -135,7 +134,6 @@ export default function Landing() {
             <section id="cara-kerja" className="section section-alt">
                 <div className="landing-container">
                     <div className="section-head">
-                        <p className="section-eyebrow">Cara Kerja</p>
                         <h2 className="section-title">Mulai dalam 4 langkah mudah</h2>
                         <p className="section-sub">
                             Setup sekali, diingatkan selamanya. Tidak perlu buka aplikasi manual.
