@@ -34,9 +34,13 @@ function getUrgencyClass(type) {
 
 function DonutChart({ completed, pending, overdue }) {
     const total = completed + pending + overdue || 1;
-    const r = 52;
-    const cx = 64;
-    const cy = 64;
+    // Scale up the chart size
+    const size = 180;
+    const cx = size / 2;
+    const cy = size / 2;
+    // Stroke width and radius
+    const strokeWidth = 16;
+    const r = (size - strokeWidth) / 2;
     const circumference = 2 * Math.PI * r;
 
     const completedPct = completed / total;
@@ -48,14 +52,14 @@ function DonutChart({ completed, pending, overdue }) {
     const overdueLen = overduePct * circumference;
 
     return (
-        <svg width="128" height="128" className="donut-svg">
+        <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} className="donut-svg">
             {/* Track */}
-            <circle cx={cx} cy={cy} r={r} fill="none" stroke="var(--color-border)" strokeWidth="12" />
+            <circle cx={cx} cy={cy} r={r} fill="none" stroke="var(--color-border)" strokeWidth={strokeWidth} />
             {/* Overdue */}
             {overduePct > 0 && (
                 <circle
                     cx={cx} cy={cy} r={r} fill="none"
-                    stroke="var(--color-danger)" strokeWidth="12"
+                    stroke="var(--color-danger)" strokeWidth={strokeWidth}
                     strokeDasharray={`${overdueLen} ${circumference - overdueLen}`}
                     strokeDashoffset={circumference * 0.25}
                     transform={`rotate(${360 * (completedPct + pendingPct)} ${cx} ${cy})`}
@@ -66,7 +70,7 @@ function DonutChart({ completed, pending, overdue }) {
             {pendingPct > 0 && (
                 <circle
                     cx={cx} cy={cy} r={r} fill="none"
-                    stroke="var(--color-warning)" strokeWidth="12"
+                    stroke="var(--color-warning)" strokeWidth={strokeWidth}
                     strokeDasharray={`${pendingLen} ${circumference - pendingLen}`}
                     strokeDashoffset={circumference * 0.25}
                     transform={`rotate(${360 * completedPct} ${cx} ${cy})`}
@@ -77,7 +81,7 @@ function DonutChart({ completed, pending, overdue }) {
             {completedPct > 0 && (
                 <circle
                     cx={cx} cy={cy} r={r} fill="none"
-                    stroke="var(--color-success)" strokeWidth="12"
+                    stroke="var(--color-success)" strokeWidth={strokeWidth}
                     strokeDasharray={`${completedLen} ${circumference - completedLen}`}
                     strokeDashoffset={circumference * 0.25}
                     style={{ transition: 'stroke-dasharray 0.8s ease' }}
@@ -85,11 +89,11 @@ function DonutChart({ completed, pending, overdue }) {
             )}
             {/* Center text */}
             <text x={cx} y={cy - 6} textAnchor="middle" fill="var(--color-text-primary)"
-                fontSize="20" fontWeight="700" fontFamily="Inter, sans-serif">
+                fontSize="32" fontWeight="700" fontFamily="Inter, sans-serif">
                 {Math.round(completedPct * 100)}%
             </text>
-            <text x={cx} y={cy + 14} textAnchor="middle" fill="var(--color-text-muted)"
-                fontSize="10" fontFamily="Inter, sans-serif">
+            <text x={cx} y={cy + 18} textAnchor="middle" fill="var(--color-text-muted)"
+                fontSize="14" fontFamily="Inter, sans-serif">
                 selesai
             </text>
         </svg>
