@@ -13,7 +13,7 @@ const navItems = [
     { label: 'Reminder', icon: BellIcon, to: '/reminders' },
 ];
 
-export default function Sidebar({ isOpen, onClose }) {
+export default function Sidebar({ isOpen, onClose, isCollapsed, onToggleCollapse }) {
     const { tasks, getStats, telegramConnected, telegramChatId } = useTaskContext();
     const stats = getStats();
     const pendingCount = stats.pending;
@@ -21,58 +21,65 @@ export default function Sidebar({ isOpen, onClose }) {
     return (
         <>
             {isOpen && <div className="sidebar-overlay" onClick={onClose} />}
-            <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
-                {/* Logo */}
+            <aside className={`sidebar ${isOpen ? 'open' : ''} ${isCollapsed ? 'collapsed' : ''}`}>
+                {/* Logo & Toggle */}
                 <div className="sidebar-logo">
-                    <img src="/MIP 2.png" height="36" alt="Inget.in" style={{ objectFit: 'contain', display: 'block' }} />
+                    <button className="sidebar-toggle-btn" onClick={onToggleCollapse} aria-label="Toggle Sidebar">
+                        <ListIcon size={18} />
+                    </button>
+                    {!isCollapsed && <img src="/MIP 2.png" height="30" alt="Inget.in" style={{ objectFit: 'contain', display: 'block' }} />}
                 </div>
 
                 {/* Navigation */}
                 <nav className="sidebar-nav">
-                    <span className="sidebar-section-label">Menu</span>
+                    {!isCollapsed && <span className="sidebar-section-label">Menu</span>}
                     {navItems.map(({ label, icon: Icon, to, showBadge }) => (
                         <NavLink
                             key={to}
                             to={to}
                             className={({ isActive }) => `sidebar-item ${isActive ? 'active' : ''}`}
                             onClick={onClose}
+                            title={isCollapsed ? label : undefined}
                         >
                             <Icon size={18} className="sidebar-item-icon" />
-                            <span>{label}</span>
-                            {showBadge && pendingCount > 0 && (
+                            {!isCollapsed && <span>{label}</span>}
+                            {!isCollapsed && showBadge && pendingCount > 0 && (
                                 <span className="sidebar-item-badge">{pendingCount}</span>
                             )}
                         </NavLink>
                     ))}
 
-                    <span className="sidebar-section-label">Konfigurasi</span>
+                    {!isCollapsed && <span className="sidebar-section-label">Konfigurasi</span>}
                     <NavLink
                         to="/settings"
                         className={({ isActive }) => `sidebar-item ${isActive ? 'active' : ''}`}
                         onClick={onClose}
+                        title={isCollapsed ? 'Pengaturan' : undefined}
                     >
                         <SettingsIcon size={18} className="sidebar-item-icon" />
-                        <span>Pengaturan</span>
+                        {!isCollapsed && <span>Pengaturan</span>}
                     </NavLink>
                 </nav>
 
                 {/* Telegram status footer */}
                 <div className="sidebar-footer">
-                    <div className="sidebar-telegram-status">
+                    <div className="sidebar-telegram-status" title={isCollapsed ? "Telegram Bot" : undefined}>
                         <TelegramIcon size={16} />
-                        <div className="sidebar-telegram-info">
-                            <div className="sidebar-telegram-label">Telegram Bot</div>
-                            <div className="sidebar-telegram-sub">
-                                {telegramConnected ? `@${telegramChatId}` : 'Belum terhubung'}
+                        {!isCollapsed && (
+                            <div className="sidebar-telegram-info">
+                                <div className="sidebar-telegram-label">Telegram Bot</div>
+                                <div className="sidebar-telegram-sub">
+                                    {telegramConnected ? `@${telegramChatId}` : 'Belum terhubung'}
+                                </div>
                             </div>
-                        </div>
+                        )}
                         <div className={`sidebar-telegram-dot ${telegramConnected ? 'connected' : 'disconnected'}`} />
                     </div>
 
                     {/* Back to Landing */}
-                    <Link to="/" className="sidebar-back-home" onClick={onClose}>
-                        <ArrowRightIcon size={14} style={{ transform: 'rotate(180deg)' }} />
-                        <span>Kembali ke Beranda</span>
+                    <Link to="/" className="sidebar-back-home" onClick={onClose} title={isCollapsed ? "Beranda" : undefined}>
+                        <ArrowRightIcon size={14} style={{ transform: 'rotate(180deg)', flexShrink: 0 }} />
+                        {!isCollapsed && <span>Kembali ke Beranda</span>}
                     </Link>
                 </div>
             </aside>

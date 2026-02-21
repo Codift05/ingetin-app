@@ -20,15 +20,24 @@ function formatDate(date) {
 }
 
 export default function Layout() {
-    const [sidebarOpen, setSidebarOpen] = useState(false);
+    const [sidebarOpen, setSidebarOpen] = useState(false); // For mobile overlay
+    const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false); // For desktop toggle
     const location = useLocation();
     const page = pageTitles[location.pathname] || { title: 'Inget.in', subtitle: '' };
     const { isDark, toggleTheme } = useTheme();
 
     return (
         <div className="app-layout">
-            <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-            <div className="app-main">
+            <Sidebar
+                isOpen={sidebarOpen}
+                onClose={() => setSidebarOpen(false)}
+                isCollapsed={isSidebarCollapsed}
+                onToggleCollapse={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+            />
+            <div
+                className="app-main"
+                style={{ marginLeft: isSidebarCollapsed ? 'var(--sidebar-collapsed-width)' : 'var(--sidebar-width)' }}
+            >
                 <header className="app-header">
                     <div className="header-left">
                         <button
