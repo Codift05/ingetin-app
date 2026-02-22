@@ -173,7 +173,7 @@ export default function Landing() {
                                     <LogoIcon size={28} />
                                 </div>
                                 <div>
-                                    <p className="chat-name">@IngetInBot</p>
+                                    <p className="chat-name">@IngetdongBot</p>
                                     <p className="chat-status">online</p>
                                 </div>
                             </div>
