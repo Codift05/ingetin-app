@@ -1,40 +1,87 @@
 // src/context/TaskContext.jsx
 import { createContext, useContext, useState, useEffect, useCallback } from 'react';
-import { MOCK_TASKS } from '../data/mockData';
+import { supabase } from '../lib/supabase';
 
 const TaskContext = createContext(null);
 
 export function TaskProvider({ children }) {
-    const [tasks, setTasks] = useState(() => {
-        const stored = localStorage.getItem('ingetin_tasks');
-        return stored ? JSON.parse(stored) : MOCK_TASKS;
-    });
+    const [tasks, setTasks] = useState([]);
     const [telegramConnected, setTelegramConnected] = useState(false);
     const [telegramChatId, setTelegramChatId] = useState('');
 
     useEffect(() => {
-        localStorage.setItem('ingetin_tasks', JSON.stringify(tasks));
+        fetchTasks();
+    }, []);
+
+    const fetchTasks = async () => {
+        const { data, error } = await supabase
+            .from('tasks')
+            .select('*')
+            .order('deadline', { ascending: true });
+
+        if (!error && data) {
+            setTasks(data);
+        } else {
+            console.error("Error fetching tasks:", error);
+        }
+    };
+
+    const addTask = useCallback(async (task) => {
+        const newTaskData = {
+            title: task.title,
+            subject: task.subject,
+            deadline: task.deadline,
+            status: task.status || 'pending',
+            source: task.source || 'manual',
+            reminderSent: { h3: false, h1: false, h0: false } // We can store this as JSONB in DB or ignore if not needed
+        };
+
+        const { data, error } = await supabase
+            .from('tasks')
+            .insert([newTaskData])
+            .select()
+            .single();
+
+        if (error) {
+            console.error("Error adding task:", error);
+            return null;
+        }
+
+        setTasks(prev => [data, ...prev]);
+        return data;
+    }, []);
+
+    const toggleTask = useCallback(async (id) => {
+        const taskToToggle = tasks.find(t => t.id === id);
+        if (!taskToToggle) return;
+
+        const newStatus = taskToToggle.status === 'completed' ? 'pending' : 'completed';
+
+        const { error } = await supabase
+            .from('tasks')
+            .update({ status: newStatus })
+            .eq('id', id);
+
+        if (!error) {
+            setTasks(prev => prev.map(t =>
+                t.id === id ? { ...t, status: newStatus } : t
+            ));
+        } else {
+            console.error("Error toggling task:", error);
+        }
     }, [tasks]);
 
-    const addTask = useCallback((task) => {
-        const newTask = {
-            id: Date.now().toString(),
-            ...task,
-            createdAt: new Date().toISOString(),
-            reminderSent: { h3: false, h1: false, h0: false },
-        };
-        setTasks(prev => [newTask, ...prev]);
-        return newTask;
-    }, []);
+    const deleteTask = useCallback(async (id) => {
+        const { error } = await supabase
+            .from('tasks')
+            .delete()
+            .eq('id', id);
 
-    const toggleTask = useCallback((id) => {
-        setTasks(prev => prev.map(t =>
-            t.id === id ? { ...t, status: t.status === 'completed' ? 'pending' : 'completed' } : t
-        ));
-    }, []);
-
-    const deleteTask = useCallback((id) => {
-        setTasks(prev => prev.filter(t => t.id !== id));
+        if (!error) {
+            setTasks(prev => prev.filter(t => t.id !== id));
+        } else {
+            console.error("Error deleting task:", error);
+        }
     }, []);
 
     const getStats = useCallback(() => {

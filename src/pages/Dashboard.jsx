@@ -1,5 +1,5 @@
 // src/pages/Dashboard.jsx
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { useTaskContext } from '../context/TaskContext';
 import AddTaskModal from '../components/AddTaskModal';
@@ -100,6 +100,44 @@ function DonutChart({ completed, pending, overdue }) {
     );
 }
 
+function SubjectBarChart({ data }) {
+    // Determine the max count to scale the bars
+    const maxCount = Math.max(...data.map(d => d.count), 1);
+
+    return (
+        <div className="subject-bar-chart">
+            {data.length === 0 ? (
+                <div className="empty-state" style={{ padding: 'var(--space-4) 0' }}>
+                    <p className="empty-sub">Belum ada tugas untuk dianalisis.</p>
+                </div>
+            ) : (
+                <div className="bar-list">
+                    {data.slice(0, 5).map((item, index) => {
+                        const widthPct = Math.max((item.count / maxCount) * 100, 5); // ensures a minimum width
+                        return (
+                            <div key={index} className="bar-item">
+                                <div className="bar-label-row">
+                                    <span className="bar-subject-name">{item.subject}</span>
+                                    <span className="bar-subject-count">{item.count} tugas</span>
+                                </div>
+                                <div className="bar-track">
+                                    <div
+                                        className="bar-fill"
+                                        style={{
+                                            width: `${widthPct}%`,
+                                            backgroundColor: `hsl(${140 + index * 40}, 60%, 50%)`
+                                        }}
+                                    />
+                                </div>
+                            </div>
+                        );
+                    })}
+                </div>
+            )}
+        </div>
+    );
+}
+
 export default function Dashboard() {
     const { tasks, toggleTask, getStats } = useTaskContext();
     const [showModal, setShowModal] = useState(false);
@@ -123,6 +161,18 @@ export default function Dashboard() {
         .filter(t => t.status === 'pending')
         .sort((a, b) => new Date(a.deadline) - new Date(b.deadline))
         .slice(0, 5);
+
+    const subjectData = useMemo(() => {
+        const counts = {};
+        tasks.forEach(t => {
+            if (t.status === 'pending') {
+                counts[t.subject] = (counts[t.subject] || 0) + 1;
+            }
+        });
+        return Object.entries(counts)
+            .map(([subject, count]) => ({ subject, count }))
+            .sort((a, b) => b.count - a.count); // sort descending
+    }, [tasks]);
 
     return (
         <div className="dashboard">
@@ -249,6 +299,14 @@ export default function Dashboard() {
                             </div>
                         </div>
                     </div>
+                </div>
+
+                {/* Task Distribution Bar Chart */}
+                <div className="card distribution-card">
+                    <div className="section-header" style={{ marginBottom: 'var(--space-4)' }}>
+                        <h2 className="section-title">Beban per Mata Kuliah</h2>
+                    </div>
+                    <SubjectBarChart data={subjectData} />
                 </div>
 
                 {/* Telegram Guide */}
