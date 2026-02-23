@@ -6,8 +6,17 @@ const TaskContext = createContext(null);
 
 export function TaskProvider({ children }) {
     const [tasks, setTasks] = useState([]);
-    const [telegramConnected, setTelegramConnected] = useState(false);
-    const [telegramChatId, setTelegramChatId] = useState('');
+    const [telegramConnected, setTelegramConnected] = useState(() => {
+        return localStorage.getItem('telegramConnected') === 'true';
+    });
+    const [telegramChatId, setTelegramChatId] = useState(() => {
+        return localStorage.getItem('telegramChatId') || '';
+    });
+
+    useEffect(() => {
+        localStorage.setItem('telegramConnected', telegramConnected);
+        localStorage.setItem('telegramChatId', telegramChatId);
+    }, [telegramConnected, telegramChatId]);
 
     useEffect(() => {
         fetchTasks();

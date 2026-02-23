@@ -144,7 +144,7 @@ export default async function handler(req, res) {
             const text = update.message.text.trim();
 
             if (text.startsWith('/start')) {
-                await sendMessage(chatId, "Halo! 👋 Saya Ingetdongbot, asisten pengingat tugas untuk Inget.in!\n\nPerintah yang bisa kamu gunakan:\n🔹 /daftar - Lihat tugas pending\n🔹 /tugas [Nama Tugas] deadline [YYYY-MM-DD HH:mm] - Tambah tugas\n🔹 /selesai [ID] - Tandai tugas selesai");
+                await sendMessage(chatId, "Halo! 👋 Saya @IngetInBot, asisten pengingat tugas untuk Inget.in!\n\nPerintah yang bisa kamu gunakan:\n🔹 /daftar - Lihat tugas pending\n🔹 /tugas [Nama Tugas] deadline [YYYY-MM-DD HH:mm] - Tambah tugas\n🔹 /selesai [ID] - Tandai tugas selesai");
             }
             else if (text.startsWith('/tugas')) {
                 await handleTugasCommand(chatId, text);
