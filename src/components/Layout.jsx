@@ -35,8 +35,7 @@ export default function Layout() {
                 onToggleCollapse={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
             />
             <div
-                className="app-main"
-                style={{ marginLeft: isSidebarCollapsed ? 'var(--sidebar-collapsed-width)' : 'var(--sidebar-width)' }}
+                className={`app-main ${isSidebarCollapsed ? 'collapsed' : ''}`}
             >
                 <header className="app-header">
                     <div className="header-left">
